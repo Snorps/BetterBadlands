@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "better_badlands:dead_bush_thatch"
+    }
+  },
+  "result": {
+    "item": "better_badlands:dead_bush_thatch_slab",
+    "count": 6
+  }
+}

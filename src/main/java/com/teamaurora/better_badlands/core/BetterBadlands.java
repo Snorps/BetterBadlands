@@ -1,32 +1,24 @@
-package com.teamaurora.better_badlands;
+package com.teamaurora.better_badlands.core;
 
 import com.teamabnormals.abnormals_core.core.utils.RegistryHelper;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
+import com.teamaurora.better_badlands.core.other.BetterBadlandsData;
+import com.teamaurora.better_badlands.core.other.BetterBadlandsRender;
+import com.teamaurora.better_badlands.core.registry.BetterBadlandsFeatures;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
-import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
-import java.util.stream.Collectors;
-
-import static com.teamaurora.better_badlands.BetterBadlands.MODID;
+import static com.teamaurora.better_badlands.core.BetterBadlands.MODID;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(MODID)
-@Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = MODID)
 @SuppressWarnings("deprecation")
 public class BetterBadlands
 {
@@ -49,10 +41,15 @@ public class BetterBadlands
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-
+        DeferredWorkQueue.runLater(() -> {
+            BetterBadlandsData.registerFlammables();
+            BetterBadlandsFeatures.generateFeatures();
+        });
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
-
+        DeferredWorkQueue.runLater(() -> {
+            BetterBadlandsRender.setupRenderLayer();
+        });
     }
 }
