@@ -2,6 +2,7 @@ package com.teamaurora.better_badlands.core;
 
 import com.teamabnormals.abnormals_core.core.utils.RegistryHelper;
 import com.teamaurora.better_badlands.core.other.BetterBadlandsData;
+import com.teamaurora.better_badlands.core.other.BetterBadlandsEvents;
 import com.teamaurora.better_badlands.core.other.BetterBadlandsRender;
 import com.teamaurora.better_badlands.core.registry.BetterBadlandsFeatures;
 import net.minecraftforge.api.distmarker.Dist;
@@ -41,6 +42,7 @@ public class BetterBadlands
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
+        MinecraftForge.EVENT_BUS.register(new BetterBadlandsEvents());
         DeferredWorkQueue.runLater(() -> {
             BetterBadlandsData.registerFlammables();
             BetterBadlandsFeatures.generateFeatures();
