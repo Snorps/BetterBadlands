@@ -104,6 +104,14 @@ public class SmallDarkOakFeature extends Feature<BaseTreeFeatureConfig> {
                 } else {
                     placeLeafAt(worldIn, position.add(0, i-3, 1), rand, config, leafPos);
                 }
+                placeRandomerLeafAt(worldIn, position.add(-2, i-2, -1), rand, config, leafPos);
+                placeRandomerLeafAt(worldIn, position.add(-2, i-2, 1), rand, config, leafPos);
+                placeRandomerLeafAt(worldIn, position.add(2, i-2, -1), rand, config, leafPos);
+                placeRandomerLeafAt(worldIn, position.add(2, i-2, 1), rand, config, leafPos);
+                placeRandomerLeafAt(worldIn, position.add(-1, i-2, -2), rand, config, leafPos);
+                placeRandomerLeafAt(worldIn, position.add(1, i-2, -2), rand, config, leafPos);
+                placeRandomerLeafAt(worldIn, position.add(-1, i-2, 2), rand, config, leafPos);
+                placeRandomerLeafAt(worldIn, position.add(1, i-2, 2), rand, config, leafPos);
 
                 Set<BlockPos> decSet = Sets.newHashSet();
                 MutableBoundingBox mutableBoundingBox = MutableBoundingBox.getNewBoundingBox();
@@ -131,6 +139,12 @@ public class SmallDarkOakFeature extends Feature<BaseTreeFeatureConfig> {
 
     private void placeRandomLeafAt(IWorldGenerationReader world, BlockPos pos, Random rand, BaseTreeFeatureConfig config, List<BlockPos> leaf) {
         if (rand.nextBoolean()) {
+            placeLeafAt(world, pos, rand, config, leaf);
+        }
+    }
+
+    private void placeRandomerLeafAt(IWorldGenerationReader world, BlockPos pos, Random rand, BaseTreeFeatureConfig config, List<BlockPos> leaf) {
+        if (rand.nextInt(3) == 0) {
             placeLeafAt(world, pos, rand, config, leaf);
         }
     }
