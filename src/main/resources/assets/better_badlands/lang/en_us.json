@@ -58,5 +58,8 @@
   "block.better_badlands.light_blue_terracotta_vertical_slab": "Light Blue Terracotta Vertical Slab",
   "block.better_badlands.magenta_terracotta_vertical_slab": "Magenta Terracotta Vertical Slab",
   "block.better_badlands.orange_terracotta_vertical_slab": "Orange Terracotta Vertical Slab",
-  "block.better_badlands.white_terracotta_vertical_slab": "White Terracotta Vertical Slab"
+  "block.better_badlands.white_terracotta_vertical_slab": "White Terracotta Vertical Slab",
+
+  "block.better_badlands.light_source": "Light Source",
+  "block.better_badlands.terracotta_lamp": "Terracotta Lamp"
 }

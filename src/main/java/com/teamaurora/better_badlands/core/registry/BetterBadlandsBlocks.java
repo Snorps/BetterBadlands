@@ -13,6 +13,7 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.SlabBlock;
+import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemGroup;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
@@ -84,4 +85,9 @@ public class BetterBadlandsBlocks {
     public static final RegistryObject<Block> MAGENTA_TERRACOTTA_VERTICAL_SLAB = HELPER.createCompatBlock("quark", "magenta_terracotta_vertical_slab", () -> new TerracottaVerticalSlabBlock(AbstractBlock.Properties.from(Blocks.TERRACOTTA)), ItemGroup.BUILDING_BLOCKS);
     public static final RegistryObject<Block> ORANGE_TERRACOTTA_VERTICAL_SLAB = HELPER.createCompatBlock("quark", "orange_terracotta_vertical_slab", () -> new TerracottaVerticalSlabBlock(AbstractBlock.Properties.from(Blocks.TERRACOTTA)), ItemGroup.BUILDING_BLOCKS);
     public static final RegistryObject<Block> WHITE_TERRACOTTA_VERTICAL_SLAB = HELPER.createCompatBlock("quark", "white_terracotta_vertical_slab", () -> new TerracottaVerticalSlabBlock(AbstractBlock.Properties.from(Blocks.TERRACOTTA)), ItemGroup.BUILDING_BLOCKS);
+
+    // brother may i have L A M P
+    public static final RegistryObject<Block> TERRACOTTA_LAMP_LIGHT_SOURCE = HELPER.createBlock("light_source", ()->new MagicInvisibleLightBlock(AbstractBlock.Properties.create(Material.AIR).setLightLevel((a)->{return 13;})), null);
+
+    public static final RegistryObject<Block> TERRACOTTA_LAMP = HELPER.createBlock("terracotta_lamp", ()->new TerracottaLampBlock(AbstractBlock.Properties.from(Blocks.TERRACOTTA)), ItemGroup.DECORATIONS);
 }
