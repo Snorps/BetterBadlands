@@ -36,11 +36,12 @@ public class SmallDarkOakFeature extends Feature<BaseTreeFeatureConfig> {
 
         boolean flag = true;
         if (position.getY() >= 1 && position.getY() + i + 1 <= worldIn.getHeight()) {
-            for (BlockPos pos : BlockPos.getAllInBoxMutable(position.add(-1, 0, -1), position.add(1, i, 1))) {
+            for (BlockPos pos : BlockPos.getAllInBoxMutable(position.add(-1, 1, -1), position.add(1, i, 1))) {
                 if (!isAirOrLeaves(worldIn, pos)) {
                     flag = false;
                 }
             }
+            if (!isAirOrLeaves(worldIn, position)) flag = false;
             if (!flag) {
                 return false;
             } else if (isValidGround(worldIn, position.down())) {

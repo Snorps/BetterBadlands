@@ -109,4 +109,17 @@ public class MagicInvisibleLightBlock extends Block {
         }
         return flag;
     }
+
+    public static boolean isValidPositionFromDir(BlockState state, IWorldReader worldIn, BlockPos pos, Direction dirp) {
+        boolean flag = false;
+        for (Direction dir : Direction.values()) {
+            if (dir != dirp.getOpposite()) {
+                if (worldIn.getBlockState(pos.offset(dir)).getBlock() instanceof TerracottaLampBlock) {
+                    Direction lampDir = worldIn.getBlockState(pos.offset(dir)).get(TerracottaLampBlock.FACING);
+                    if (dir == lampDir.getOpposite()) flag = true;
+                }
+            }
+        }
+        return flag;
+    }
 }

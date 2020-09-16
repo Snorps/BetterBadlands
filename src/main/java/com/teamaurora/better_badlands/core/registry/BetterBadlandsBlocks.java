@@ -90,4 +90,20 @@ public class BetterBadlandsBlocks {
     public static final RegistryObject<Block> TERRACOTTA_LAMP_LIGHT_SOURCE = HELPER.createBlock("light_source", ()->new MagicInvisibleLightBlock(AbstractBlock.Properties.create(Material.AIR).setLightLevel((a)->{return 13;})), null);
 
     public static final RegistryObject<Block> TERRACOTTA_LAMP = HELPER.createBlock("terracotta_lamp", ()->new TerracottaLampBlock(AbstractBlock.Properties.from(Blocks.TERRACOTTA)), ItemGroup.DECORATIONS);
+    public static final RegistryObject<Block> BLACK_TERRACOTTA_LAMP = HELPER.createBlock("black_terracotta_lamp", ()->new TerracottaLampBlock(AbstractBlock.Properties.from(Blocks.TERRACOTTA)), ItemGroup.DECORATIONS);
+    public static final RegistryObject<Block> RED_TERRACOTTA_LAMP = HELPER.createBlock("red_terracotta_lamp", ()->new TerracottaLampBlock(AbstractBlock.Properties.from(Blocks.TERRACOTTA)), ItemGroup.DECORATIONS);
+    public static final RegistryObject<Block> GREEN_TERRACOTTA_LAMP = HELPER.createBlock("green_terracotta_lamp", ()->new TerracottaLampBlock(AbstractBlock.Properties.from(Blocks.TERRACOTTA)), ItemGroup.DECORATIONS);
+    public static final RegistryObject<Block> BROWN_TERRACOTTA_LAMP = HELPER.createBlock("brown_terracotta_lamp", ()->new TerracottaLampBlock(AbstractBlock.Properties.from(Blocks.TERRACOTTA)), ItemGroup.DECORATIONS);
+    public static final RegistryObject<Block> BLUE_TERRACOTTA_LAMP = HELPER.createBlock("blue_terracotta_lamp", ()->new TerracottaLampBlock(AbstractBlock.Properties.from(Blocks.TERRACOTTA)), ItemGroup.DECORATIONS);
+    public static final RegistryObject<Block> PURPLE_TERRACOTTA_LAMP = HELPER.createBlock("purple_terracotta_lamp", ()->new TerracottaLampBlock(AbstractBlock.Properties.from(Blocks.TERRACOTTA)), ItemGroup.DECORATIONS);
+    public static final RegistryObject<Block> CYAN_TERRACOTTA_LAMP = HELPER.createBlock("cyan_terracotta_lamp", ()->new TerracottaLampBlock(AbstractBlock.Properties.from(Blocks.TERRACOTTA)), ItemGroup.DECORATIONS);
+    public static final RegistryObject<Block> LIGHT_GRAY_TERRACOTTA_LAMP = HELPER.createBlock("light_gray_terracotta_lamp", ()->new TerracottaLampBlock(AbstractBlock.Properties.from(Blocks.TERRACOTTA)), ItemGroup.DECORATIONS);
+    public static final RegistryObject<Block> GRAY_TERRACOTTA_LAMP = HELPER.createBlock("gray_terracotta_lamp", ()->new TerracottaLampBlock(AbstractBlock.Properties.from(Blocks.TERRACOTTA)), ItemGroup.DECORATIONS);
+    public static final RegistryObject<Block> PINK_TERRACOTTA_LAMP = HELPER.createBlock("pink_terracotta_lamp", ()->new TerracottaLampBlock(AbstractBlock.Properties.from(Blocks.TERRACOTTA)), ItemGroup.DECORATIONS);
+    public static final RegistryObject<Block> LIME_TERRACOTTA_LAMP = HELPER.createBlock("lime_terracotta_lamp", ()->new TerracottaLampBlock(AbstractBlock.Properties.from(Blocks.TERRACOTTA)), ItemGroup.DECORATIONS);
+    public static final RegistryObject<Block> YELLOW_TERRACOTTA_LAMP = HELPER.createBlock("yellow_terracotta_lamp", ()->new TerracottaLampBlock(AbstractBlock.Properties.from(Blocks.TERRACOTTA)), ItemGroup.DECORATIONS);
+    public static final RegistryObject<Block> LIGHT_BLUE_TERRACOTTA_LAMP = HELPER.createBlock("light_blue_terracotta_lamp", ()->new TerracottaLampBlock(AbstractBlock.Properties.from(Blocks.TERRACOTTA)), ItemGroup.DECORATIONS);
+    public static final RegistryObject<Block> MAGENTA_TERRACOTTA_LAMP = HELPER.createBlock("magenta_terracotta_lamp", ()->new TerracottaLampBlock(AbstractBlock.Properties.from(Blocks.TERRACOTTA)), ItemGroup.DECORATIONS);
+    public static final RegistryObject<Block> ORANGE_TERRACOTTA_LAMP = HELPER.createBlock("orange_terracotta_lamp", ()->new TerracottaLampBlock(AbstractBlock.Properties.from(Blocks.TERRACOTTA)), ItemGroup.DECORATIONS);
+    public static final RegistryObject<Block> WHITE_TERRACOTTA_LAMP = HELPER.createBlock("white_terracotta_lamp", ()->new TerracottaLampBlock(AbstractBlock.Properties.from(Blocks.TERRACOTTA)), ItemGroup.DECORATIONS);
 }

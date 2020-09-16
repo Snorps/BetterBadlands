@@ -41,6 +41,17 @@ public class TerracottaLampBlock extends Block {
         super.neighborChanged(state, worldIn, pos, blockIn, fromPos, isMoving);
     }
 
+    @Override
+    public void onReplaced(BlockState state, World worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
+        Direction dir = state.get(TerracottaLampBlock.FACING);
+        if (worldIn.getBlockState(pos.offset(dir)).getBlock() == BetterBadlandsBlocks.TERRACOTTA_LAMP_LIGHT_SOURCE.get()) {
+            if (!MagicInvisibleLightBlock.isValidPositionFromDir(worldIn.getBlockState(pos.offset(dir)), worldIn, pos.offset(dir), dir)) {
+                worldIn.setBlockState(pos.offset(dir), Blocks.AIR.getDefaultState());
+            }
+        }
+        super.onReplaced(state, worldIn, pos, newState, isMoving);
+    }
+
     public static Direction getDir(BlockState state) {
         return state.get(TerracottaLampBlock.FACING);
     }

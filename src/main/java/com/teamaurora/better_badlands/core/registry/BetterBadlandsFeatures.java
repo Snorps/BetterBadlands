@@ -16,8 +16,11 @@ public class BetterBadlandsFeatures {
     }
 
     public static void generate(Biome biome) {
-        if (biome == Biomes.WOODED_BADLANDS_PLATEAU || biome == Biomes.MODIFIED_BADLANDS_PLATEAU) {
+        if (biome == Biomes.WOODED_BADLANDS_PLATEAU || biome == Biomes.MODIFIED_BADLANDS_PLATEAU || biome == Biomes.DARK_FOREST || biome == Biomes.DARK_FOREST_HILLS) {
             BetterBadlandsBiomeFeatures.replaceOakTrees(biome);
+        }
+        if (biome == Biomes.WOODED_BADLANDS_PLATEAU || biome == Biomes.MODIFIED_BADLANDS_PLATEAU) {
+            BetterBadlandsBiomeFeatures.addSparseDarkOakTrees(biome);
         }
     }
 }
