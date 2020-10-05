@@ -1,1 +1,0 @@
-{"type": "minecraft:block", "pools": [{"name": "pool1", "rolls": 1, "entries": [{"type": "minecraft:item", "name": "better_badlands:blue_terracotta_stairs"}], "conditions": [{"condition": "minecraft:survives_explosion"}]}]}

@@ -1,1 +1,0 @@
-{"type": "minecraft:stonecutting", "ingredient": {"item": "minecraft:blue_terracotta"}, "result": "better_badlands:blue_terracotta_vertical_slab", "conditions": [{"type": "abnormals_core:quark_flag", "flag": "vertical_slabs"}], "count": 2}

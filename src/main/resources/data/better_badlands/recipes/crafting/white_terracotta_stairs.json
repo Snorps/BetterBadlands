@@ -1,1 +1,0 @@
-{"type": "minecraft:crafting_shaped", "pattern": ["#  ", "## ", "###"], "key": {"#": {"item": "minecraft:white_terracotta"}}, "result": {"item": "better_badlands:white_terracotta_stairs", "count": 6}}
