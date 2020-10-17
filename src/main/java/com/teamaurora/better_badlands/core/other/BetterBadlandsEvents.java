@@ -34,7 +34,7 @@ public class BetterBadlandsEvents {
                 ) {
                     event.setResult(Event.Result.DENY);
                     world.setBlockState(pos, Blocks.AIR.getDefaultState());
-                    ConfiguredFeature<BaseTreeFeatureConfig, ?> configuredFeature = BetterBadlandsFeatures.SMALL_DARK_OAK_TREE.withConfiguration(BetterBadlandsBiomeFeatures.SMALL_DARK_OAK_CONFIG);
+                    ConfiguredFeature<BaseTreeFeatureConfig, ?> configuredFeature = BetterBadlandsFeatures.SMALL_DARK_OAK_TREE.get().withConfiguration(BetterBadlandsBiomeFeatures.SMALL_DARK_OAK_CONFIG);
                     if (!configuredFeature.func_236265_a_(world, world.func_241112_a_(), world.getChunkProvider().getChunkGenerator(), rand, pos)) {
                         world.setBlockState(pos, state);
                     }

@@ -22,7 +22,7 @@ public class BetterBadlandsBiomeFeatures {
     public static final BaseTreeFeatureConfig SMALL_DARK_OAK_CONFIG = (new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(DARK_OAK_LOG), new SimpleBlockStateProvider(DARK_OAK_LEAVES), null, null, null)).func_236700_a_().build();
 
     public static void addSparseDarkOakTrees(Biome biomeIn) {
-        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, BetterBadlandsFeatures.SMALL_DARK_OAK_TREE.withConfiguration(SMALL_DARK_OAK_CONFIG).withPlacement(Placement.COUNT_EXTRA_HEIGHTMAP.configure(new AtSurfaceWithExtraConfig(5, 0.1F, 1))));
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, BetterBadlandsFeatures.SMALL_DARK_OAK_TREE.get().withConfiguration(SMALL_DARK_OAK_CONFIG).withPlacement(Placement.COUNT_EXTRA_HEIGHTMAP.configure(new AtSurfaceWithExtraConfig(5, 0.1F, 1))));
     }
 
     public static void replaceOakTrees(Biome biome) {
@@ -30,7 +30,7 @@ public class BetterBadlandsBiomeFeatures {
         List<ConfiguredFeature<?, ?>> toRemove = new ArrayList<>();
         int listSize = list.size();
 
-        if (biome == Biomes.DARK_FOREST) {
+        if (biome.getRegistryName().toString().equals("minecraft:wooded_badlands_plateau")) {
             int fuck = 0;
         }
 
@@ -42,7 +42,7 @@ public class BetterBadlandsBiomeFeatures {
                     BaseTreeFeatureConfig treeCfg = (BaseTreeFeatureConfig) decorated.feature.config;
                     ConfiguredFeature<?, ?> cfgdTree = new ConfiguredFeature<>((TreeFeature)decorated.feature.feature, (BaseTreeFeatureConfig)decorated.feature.config);
                     if (treeCfg == DefaultBiomeFeatures.OAK_TREE_CONFIG) {
-                        cfgdTree = BetterBadlandsFeatures.SMALL_DARK_OAK_TREE.withConfiguration(SMALL_DARK_OAK_CONFIG);
+                        cfgdTree = BetterBadlandsFeatures.SMALL_DARK_OAK_TREE.get().withConfiguration(SMALL_DARK_OAK_CONFIG);
                     }
                     ConfiguredFeature<DecoratedFeatureConfig, ?> tempFeature = new ConfiguredFeature<DecoratedFeatureConfig, DecoratedFeature>(
                             (DecoratedFeature) configuredFeature.feature, new DecoratedFeatureConfig(
@@ -56,7 +56,7 @@ public class BetterBadlandsBiomeFeatures {
                     for (ConfiguredRandomFeatureList crfl : tree.features) {
                         if (crfl.feature.feature instanceof TreeFeature) {
                             if (crfl.feature.config == DefaultBiomeFeatures.OAK_TREE_CONFIG) {
-                                tempFeatures.add(new ConfiguredRandomFeatureList<BaseTreeFeatureConfig>(BetterBadlandsFeatures.SMALL_DARK_OAK_TREE.withConfiguration(SMALL_DARK_OAK_CONFIG), crfl.chance));
+                                tempFeatures.add(new ConfiguredRandomFeatureList<BaseTreeFeatureConfig>(BetterBadlandsFeatures.SMALL_DARK_OAK_TREE.get().withConfiguration(SMALL_DARK_OAK_CONFIG), crfl.chance));
                             } else {
                                 tempFeatures.add(crfl);
                             }
@@ -71,7 +71,7 @@ public class BetterBadlandsBiomeFeatures {
                         BaseTreeFeatureConfig treeCfg = (BaseTreeFeatureConfig) tree.defaultFeature.config;
                         if (treeCfg == DefaultBiomeFeatures.OAK_TREE_CONFIG) {
                             tempDefCfg = SMALL_DARK_OAK_CONFIG;
-                            tempDef2 = BetterBadlandsFeatures.SMALL_DARK_OAK_TREE;
+                            tempDef2 = BetterBadlandsFeatures.SMALL_DARK_OAK_TREE.get();
                         }
                         ConfiguredFeature<?, ?> tempDef = new ConfiguredFeature<BaseTreeFeatureConfig, Feature<BaseTreeFeatureConfig>>(tempDef2, tempDefCfg);
                         ConfiguredFeature<DecoratedFeatureConfig, ?> tempFeature = new ConfiguredFeature<DecoratedFeatureConfig, DecoratedFeature>(

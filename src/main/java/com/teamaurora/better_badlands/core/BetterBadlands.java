@@ -33,6 +33,8 @@ public class BetterBadlands
         REGISTRY_HELPER.getDeferredItemRegister().register(eventBus);
         REGISTRY_HELPER.getDeferredEntityRegister().register(eventBus);
 
+        BetterBadlandsFeatures.FEATURES.register(eventBus);
+
         MinecraftForge.EVENT_BUS.register(this);
 
         eventBus.addListener(this::commonSetup);

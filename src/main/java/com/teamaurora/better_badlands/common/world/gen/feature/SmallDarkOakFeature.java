@@ -9,6 +9,7 @@ import net.minecraft.block.LeavesBlock;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.MutableBoundingBox;
 import net.minecraft.util.math.vector.Vector3i;
 import net.minecraft.world.ISeedReader;
@@ -31,12 +32,24 @@ public class SmallDarkOakFeature extends Feature<BaseTreeFeatureConfig> {
 
     @Override
     public boolean func_230362_a_(ISeedReader worldIn, StructureManager manager, ChunkGenerator generator, Random rand, BlockPos position, BaseTreeFeatureConfig config) {
-        int heightOffset = rand.nextInt(3);
-        int i = heightOffset + 4;
+        int height = rand.nextInt(3) + 3;
+        int splitHeight = rand.nextInt(height-2) + 2;
+
+        int randDir = rand.nextInt(4);
+        Direction dir;
+        if (randDir == 0) {
+            dir = Direction.NORTH;
+        } else if (randDir == 1) {
+            dir = Direction.EAST;
+        } else if (randDir == 2) {
+            dir = Direction.SOUTH;
+        } else {
+            dir = Direction.WEST;
+        }
 
         boolean flag = true;
-        if (position.getY() >= 1 && position.getY() + i + 1 <= worldIn.getHeight()) {
-            for (BlockPos pos : BlockPos.getAllInBoxMutable(position.add(-1, 1, -1), position.add(1, i, 1))) {
+        if (position.getY() >= 1 && position.getY() + height + 2 <= worldIn.getHeight()) {
+            for (BlockPos pos : BlockPos.getAllInBoxMutable(position.add(-1, 1, -1), position.add(1, height, 1))) {
                 if (!isAirOrLeaves(worldIn, pos)) {
                     flag = false;
                 }
@@ -50,69 +63,14 @@ public class SmallDarkOakFeature extends Feature<BaseTreeFeatureConfig> {
 
                 setDirtAt(worldIn, position.down());
 
-                for (int j = 0; j <= i; j++) {
-                    placeLogAt(worldIn, position.up(j), rand, config, logPos);
+                for (BlockPos blockPos : BlockPos.getAllInBoxMutable(position, position.up(splitHeight))) {
+                    placeLogAt(worldIn, blockPos, rand, config, logPos);
+                }
+                for (BlockPos blockPos : BlockPos.getAllInBoxMutable(position.offset(dir).up(splitHeight), position.offset(dir).up(height))) {
+                    placeLogAt(worldIn, blockPos, rand, config, logPos);
                 }
 
-                placeLeafAt(worldIn, position.add(0, i+1, 0), rand, config, leafPos);
-                placeLeafAt(worldIn, position.add(-1, i+1, 0), rand, config, leafPos);
-                placeLeafAt(worldIn, position.add(1, i+1, 0), rand, config, leafPos);
-                placeLeafAt(worldIn, position.add(0, i+1, -1), rand, config, leafPos);
-                placeLeafAt(worldIn, position.add(0, i+1, 1), rand, config, leafPos);
-
-                placeLeafAt(worldIn, position.add(-1, i, 0), rand, config, leafPos);
-                placeLeafAt(worldIn, position.add(1, i, 0), rand, config, leafPos);
-                placeLeafAt(worldIn, position.add(0, i, -1), rand, config, leafPos);
-                placeLeafAt(worldIn, position.add(0, i, 1), rand, config, leafPos);
-                placeRandomLeafAt(worldIn, position.add(-1, i, -1), rand, config, leafPos);
-                placeRandomLeafAt(worldIn, position.add(-1, i, 1), rand, config, leafPos);
-                placeRandomLeafAt(worldIn, position.add(1, i, -1), rand, config, leafPos);
-                placeRandomLeafAt(worldIn, position.add(1, i, 1), rand, config, leafPos);
-
-                for (int x = -2; x <= 2; x++) {
-                    for (int z = -2; z <= 2; z++) {
-                        if (Math.abs(x) != 2 || Math.abs(z) != 2) {
-                            placeLeafAt(worldIn, position.add(x, i-1, z), rand, config, leafPos);
-                        }
-                    }
-                }
-
-                for (BlockPos pos : BlockPos.getAllInBoxMutable(position.add(-1, i-2, -1), position.add(1, i-2, 1))) {
-                    placeLeafAt(worldIn, pos, rand, config, leafPos);
-                }
-
-                if (rand.nextBoolean()) {
-                    placeLeafAt(worldIn, position.add(-2, i-2, 0), rand, config, leafPos);
-                    placeLeafAt(worldIn, position.add(-2, i-3, 0), rand, config, leafPos);
-                } else {
-                    placeLeafAt(worldIn, position.add(-1, i-3, 0), rand, config, leafPos);
-                }
-                if (rand.nextBoolean()) {
-                    placeLeafAt(worldIn, position.add(2, i-2, 0), rand, config, leafPos);
-                    placeLeafAt(worldIn, position.add(2, i-3, 0), rand, config, leafPos);
-                } else {
-                    placeLeafAt(worldIn, position.add(1, i-3, 0), rand, config, leafPos);
-                }
-                if (rand.nextBoolean()) {
-                    placeLeafAt(worldIn, position.add(0, i-2, -2), rand, config, leafPos);
-                    placeLeafAt(worldIn, position.add(0, i-3, -2), rand, config, leafPos);
-                } else {
-                    placeLeafAt(worldIn, position.add(0, i-3, -1), rand, config, leafPos);
-                }
-                if (rand.nextBoolean()) {
-                    placeLeafAt(worldIn, position.add(0, i-2, 2), rand, config, leafPos);
-                    placeLeafAt(worldIn, position.add(0, i-3, 2), rand, config, leafPos);
-                } else {
-                    placeLeafAt(worldIn, position.add(0, i-3, 1), rand, config, leafPos);
-                }
-                placeRandomerLeafAt(worldIn, position.add(-2, i-2, -1), rand, config, leafPos);
-                placeRandomerLeafAt(worldIn, position.add(-2, i-2, 1), rand, config, leafPos);
-                placeRandomerLeafAt(worldIn, position.add(2, i-2, -1), rand, config, leafPos);
-                placeRandomerLeafAt(worldIn, position.add(2, i-2, 1), rand, config, leafPos);
-                placeRandomerLeafAt(worldIn, position.add(-1, i-2, -2), rand, config, leafPos);
-                placeRandomerLeafAt(worldIn, position.add(1, i-2, -2), rand, config, leafPos);
-                placeRandomerLeafAt(worldIn, position.add(-1, i-2, 2), rand, config, leafPos);
-                placeRandomerLeafAt(worldIn, position.add(1, i-2, 2), rand, config, leafPos);
+                placeLeavesAt(worldIn, position.offset(dir).up(height), dir, rand, config, leafPos);
 
                 Set<BlockPos> decSet = Sets.newHashSet();
                 MutableBoundingBox mutableBoundingBox = MutableBoundingBox.getNewBoundingBox();
@@ -133,6 +91,36 @@ public class SmallDarkOakFeature extends Feature<BaseTreeFeatureConfig> {
         }
     }
 
+    private void placeLeavesAt(ISeedReader worldIn, BlockPos pos, Direction dir, Random rand, BaseTreeFeatureConfig config, List<BlockPos> leaf) {
+        for (BlockPos blockPos : BlockPos.getAllInBoxMutable(pos.add(-1,-1,-1), pos.add(1, 1, 1))) {
+            placeLeafAt(worldIn, blockPos, rand, config, leaf);
+        }
+        for (BlockPos blockPos : BlockPos.getAllInBoxMutable(pos.add(-2,0,-1),pos.add(-2,0,1))) {
+            placeLeafAt(worldIn, blockPos, rand, config, leaf);
+        }
+        for (BlockPos blockPos : BlockPos.getAllInBoxMutable(pos.add(2,0,-1),pos.add(2,0,1))) {
+            placeLeafAt(worldIn, blockPos, rand, config, leaf);
+        }
+        for (BlockPos blockPos : BlockPos.getAllInBoxMutable(pos.add(-1,0,-2),pos.add(1,0,-2))) {
+            placeLeafAt(worldIn, blockPos, rand, config, leaf);
+        }
+        for (BlockPos blockPos : BlockPos.getAllInBoxMutable(pos.add(-1,0,2),pos.add(1,0,2))) {
+            placeLeafAt(worldIn, blockPos, rand, config, leaf);
+        }
+        placeLeafAt(worldIn, pos.add(-2,1,0), rand, config, leaf);
+        placeLeafAt(worldIn, pos.add(2,1,0), rand, config, leaf);
+        placeLeafAt(worldIn, pos.add(0,1,-2), rand, config, leaf);
+        placeLeafAt(worldIn, pos.add(0,1,2), rand, config, leaf);
+        placeLeafAt(worldIn, pos.up(2), rand, config, leaf);
+
+        placeLeafAt(worldIn, pos.offset(dir, 3), rand, config, leaf);
+        placeRandomLeafAt(worldIn, pos.up(2).offset(dir), rand, config, leaf);
+        for (BlockPos blockPos : BlockPos.getAllInBoxMutable(pos.add(-1,0,-1).offset(dir,2), pos.add(1,0,1).offset(dir,2))) {
+            placeRandomLeafAt(worldIn, blockPos, rand, config, leaf);
+        }
+        placeRandomLeafAt(worldIn, pos.down().offset(dir,-2),rand,config,leaf);
+    }
+
     private void placeLogAt(IWorldWriter worldIn, BlockPos pos, Random rand, BaseTreeFeatureConfig config, List<BlockPos> log) {
         this.setLogState(worldIn, pos, config.trunkProvider.getBlockState(rand, pos));
         log.add(pos);
@@ -140,12 +128,6 @@ public class SmallDarkOakFeature extends Feature<BaseTreeFeatureConfig> {
 
     private void placeRandomLeafAt(IWorldGenerationReader world, BlockPos pos, Random rand, BaseTreeFeatureConfig config, List<BlockPos> leaf) {
         if (rand.nextBoolean()) {
-            placeLeafAt(world, pos, rand, config, leaf);
-        }
-    }
-
-    private void placeRandomerLeafAt(IWorldGenerationReader world, BlockPos pos, Random rand, BaseTreeFeatureConfig config, List<BlockPos> leaf) {
-        if (rand.nextInt(3) == 0) {
             placeLeafAt(world, pos, rand, config, leaf);
         }
     }
