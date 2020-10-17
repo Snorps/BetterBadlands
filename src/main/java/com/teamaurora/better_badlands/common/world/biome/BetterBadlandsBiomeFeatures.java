@@ -29,6 +29,10 @@ public class BetterBadlandsBiomeFeatures {
         List<ConfiguredFeature<?, ?>> list = biome.getFeatures(GenerationStage.Decoration.VEGETAL_DECORATION);
         List<ConfiguredFeature<?, ?>> toRemove = new ArrayList<>();
         int listSize = list.size();
+        
+        if (biome.getRegistryName().toString().equals("minecraft:wooded_badlands_plateau")) {
+            int fuck = 0;
+        }
 
         for (int i = 0; i < listSize; i++) {
             ConfiguredFeature<?, ?> configuredFeature = list.get(i);
